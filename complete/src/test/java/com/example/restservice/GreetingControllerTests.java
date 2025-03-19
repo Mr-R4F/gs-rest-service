@@ -34,6 +34,18 @@ public class GreetingControllerTests {
 	@Autowired
 	private MockMvc mockMvc;
 
+	//Os métodos fornecidos são testes unitários escritos para verificar o comportamento de um endpoint da aplicação
+
+	/*
+	 * Este teste faz uma requisição GET ao endpoint /greeting sem fornecer nenhum parâmetro.
+	 * Ele verifica se a resposta tem o status HTTP 200 OK (status().isOk()).
+	 * Verifica também se o campo "content" do corpo JSON da resposta contém o valor "Hello, World!".
+	 * 
+	 * Em resumo, testa se o endpoint retorna a mensagem padrão "Hello, World!" quando nenhum parâmetro é passado.
+	 * 
+	 * Objetivo: Validar que, quando o endpoint é chamado sem parâmetros, ele retorna uma resposta padrão adequada, ou seja, a mensagem "Hello, World!".
+	 * Isso ajuda a evitar erros ou comportamentos inesperados quando usuários fazem requisições sem passar parâmetros.
+	 */
 	@Test
 	public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
 
@@ -41,6 +53,17 @@ public class GreetingControllerTests {
 				.andExpect(jsonPath("$.content").value("Hello, World!"));
 	}
 
+
+	/*
+	 * Este teste faz uma requisição GET ao endpoint /greeting, mas desta vez fornece um parâmetro de requisição chamado name com o valor "Spring Community".
+	 * Ele verifica se a resposta tem o status HTTP 200 OK (status().isOk()).
+	 * Verifica também se o campo "content" do corpo JSON da resposta contém o valor "Hello, Spring Community!".
+	 * 
+	 * Em resumo, testa se o endpoint personaliza a mensagem para incluir o valor do parâmetro name.
+	 * 
+	 * Objetivo: Garantir que o endpoint pode personalizar a mensagem retornada de acordo com o valor do parâmetro name passado na requisição.
+	 * Neste caso, ao passar o valor "Spring Community", o teste verifica que a resposta seja "Hello, Spring Community!".
+	 */
 	@Test
 	public void paramGreetingShouldReturnTailoredMessage() throws Exception {
 
