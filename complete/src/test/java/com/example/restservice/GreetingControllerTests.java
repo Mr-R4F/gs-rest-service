@@ -34,6 +34,14 @@ public class GreetingControllerTests {
 	@Autowired
 	private MockMvc mockMvc;
 
+	/* 
+	 * O método abaixo, realiza uma requisição "GET" e espera receber a URL "/Greeting". Em caso de sucesso durante o processo de requisição, o endpoint 
+	 * espera retornar o código 200 (OK) e também um json com um campo "Content" cujo o valor deve ser "Hello, World!". Qualquer outro método 
+	 * de requisição que não seja "GET", uma URL diferente ou valor diferente, ocasionará  em um erro. A API irá informar esse erro com um json contendo os campos 
+	 * (Ou seja, o método vai 'lançar' uma Exception).
+	 * 
+	 * O ojetivo geral do método é efetuar um teste na URL "/Greeting" e verificar se o código de retorno e o valor são os esperados.
+	 */
 	@Test
 	public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
 
@@ -41,6 +49,14 @@ public class GreetingControllerTests {
 				.andExpect(jsonPath("$.content").value("Hello, World!"));
 	}
 
+	/* O método abaixo, realiza uma requisição "GET" e espera receber a URL "/Greeting" e um parâmetro ("name" com o valor "Spring Community"). No processo 
+	 * de requisição, o endpoint espera o retorno do código 200 (OK) e também um json com um campo "Content" cujo o valor deve ser "Hello, Spring Community!",
+	 * e o parametro "name" deve ser "Spring Community" para que o teste seja bem sucedido.
+	 * Qualquer outro método de requisição que não seja "GET", uma URL diferente ou paramêtros diferentes, ocasionará em um código de erro. A API irá informar esse 
+	 * erro. (Ou seja, o método vai 'lançar' uma Exception).
+	 * 
+	 * O ojetivo geral do método é efetuar um teste na URL "/Greeting", validar se os parâmetros estão corretos, o status e verificar se o valor é o esperado.
+	 */
 	@Test
 	public void paramGreetingShouldReturnTailoredMessage() throws Exception {
 
